@@ -1,0 +1,16 @@
+{
+  "name": "rollup-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "rollup ./src/main.js --file ./dist/bundle.js --format es --watch",
+    "build": "rollup ./src/main.js --file ./dist/bundle.js --format es",
+    "help": "rollup help"
+  },
+  "devDependencies": {
+    "rollup": "^2.58.0"
+  },
+  "author": "jackchoumine jackzhoumine@gmail.com",
+  "license": "ISC"
+}
