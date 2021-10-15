@@ -1,7 +1,12 @@
-(function (factory) {
-  typeof define === 'function' && define.amd ? define(factory) :
-  factory();
-})((function () { 'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('dayjs')) :
+  typeof define === 'function' && define.amd ? define(['dayjs'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.dayjs));
+})(this, (function (dayjs) { 'use strict';
+
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var dayjs__default = /*#__PURE__*/_interopDefaultLegacy(dayjs);
 
   /*
    * @Description :
@@ -16,41 +21,11 @@
 
   /*
    * @Description :
-   * @Date        : 2021-10-15 07:23:58 +0800
-   * @Author      : JackChou
-   * @LastEditTime: 2021-10-15 07:28:18 +0800
-   * @LastEditors : JackChou
-   */
-  function timePad(n) {
-    return ('' + n).padStart(2, '0')
-  }
-
-  /**
-   * formate HH:MM
-   * @param {*} [d=new Date()]
-   * @return {*}
-   */
-  function formatHM(d = new Date()) {
-    return timePad(d.getHours() + ':' + timePad(d.getMinutes()))
-  }
-
-  /**
-   * formate HH:MM:SS
-   * @param {*} [d=new Date()]
-   * @return {*}
-   */
-  function formatHMS(d = new Date()) {
-    return formatHM(d) + ':' + timePad(d.getSeconds())
-  }
-
-  /*
-   * @Description :
    * @Date        : 2021-10-15 07:21:51 +0800
    * @Author      : JackChou
-   * @LastEditTime: 2021-10-15 07:31:16 +0800
+   * @LastEditTime: 2021-10-15 23:40:35 +0800
    * @LastEditors : JackChou
    */
-
   // get clock element
   const clock = get('.clock');
 
@@ -58,7 +33,7 @@
     console.log('initializing clock');
     // update clock every second
     setInterval(() => {
-      clock.textContent = formatHMS();
+      clock.textContent = dayjs__default["default"]().format('HH:mm:ss');
     }, 1000);
   }
 

@@ -16,3 +16,7 @@
 `"rollup ./src/main.js -o ./dist/bundle.js --format es"`
 
 ## 配置文件
+
+## 参考
+
+[An Introduction to the Rollup.js JavaScript Bundler](https://www.sitepoint.com/rollup-javascript-bundler-introduction/)

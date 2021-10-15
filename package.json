@@ -13,6 +13,9 @@
     "bp": "rollup --config --environment NODE_ENV:production"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "dayjs": "^1.10.7",
     "rollup": "^2.58.0"
   },
   "author": "jackchoumine jackzhoumine@gmail.com",
