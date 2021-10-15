@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "rollup ./src/main.js --file ./dist/bundle.js --format es --watch",
-    "build": "rollup ./src/main.js --file ./dist/bundle.js --format es",
-    "help": "rollup help"
+    "watch": "rollup ./src/main.js --file ./dist/bundle.js --format es -w",
+    "build": "rollup ./src/main.js -o ./dist/bundle.js --format es",
+    "iife": "rollup ./src/main.js --file ./dist/bundle.js --format iife",
+    "help": "rollup help",
+    "ciife": "rollup -c ./rollup.config.iife.js",
+    "cw": "rollup -c -w",
+    "bp": "rollup --config --environment NODE_ENV:production"
   },
   "devDependencies": {
     "rollup": "^2.58.0"
