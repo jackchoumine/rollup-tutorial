@@ -6,14 +6,15 @@
  * @LastEditors : JackChou
  */
 import * as dom from './lib/dom.js'
-import dayjs from 'dayjs'
+import { __CLOCKFORMAT__ } from './lib/time.js'
+
 // get clock element
-const clock = dom.get('.clock')
+const clock = dom.get('__CLOCKSELECTOR__')
 
 if (clock) {
   console.log('initializing clock')
-  // update clock every second
+
   setInterval(() => {
-    clock.textContent = dayjs().format('HH:mm:ss')
-  }, 1000)
+    clock.textContent = __CLOCKFORMAT__()
+  }, __CLOCKINTERVAL__)
 }
