@@ -10,7 +10,8 @@
     "help": "rollup help",
     "ciife": "rollup -c ./rollup.config.iife.js",
     "cw": "rollup -c -w",
-    "bp": "rollup --config --environment NODE_ENV:production"
+    "bp": "rollup --config --environment NODE_ENV:production",
+    "plugin": "rollup -c ./rollup.config.plugin.js --environment NODE_ENV:production"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.0",
