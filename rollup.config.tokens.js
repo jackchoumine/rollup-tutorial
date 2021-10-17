@@ -14,6 +14,7 @@ const sourcemap = dev ? 'inline' : false
 
 // web design token replacements
 const tokens = {
+  preventAssignment: true,
   __CLOCKSELECTOR__: '.clock',
   __CLOCKINTERVAL__: 1000,
   __CLOCKFORMAT__: 'formatHMS',
