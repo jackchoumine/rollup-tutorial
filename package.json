@@ -12,9 +12,11 @@
     "cw": "rollup -c -w",
     "bp": "rollup --config --environment NODE_ENV:production",
     "plugin": "rollup -c ./rollup.config.plugin.js --environment NODE_ENV:production",
-    "tokens": "rollup -c ./rollup.config.tokens.js --environment NODE_ENV:production"
+    "tokens": "rollup -c ./rollup.config.tokens.js --environment NODE_ENV:production",
+    "babel": "rollup -c ./rollup.config.babel.js --environment NODE_ENV:production"
   },
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "@rollup/plugin-replace": "^3.0.0",
