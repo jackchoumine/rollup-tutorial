@@ -2,6 +2,9 @@ import { nodeResolve as resolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
 import babel from '@rollup/plugin-buble'
+import { getBabelOutputPlugin } from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
+
 const dev = process.env.NODE_ENV !== 'production'
 const sourcemap = dev ? 'inline' : false
 
@@ -24,7 +27,7 @@ export default [
     input,
     output: {
       file: './es6/bundle.mjs',
-      format: 'iife',
+      format: 'cjs',
       sourcemap,
     },
     plugins: [
@@ -36,6 +39,18 @@ export default [
         browser: true,
       }),
       commonjs(),
+      terser({
+        ecma: 2018,
+        mangle: { toplevel: true },
+        compress: {
+          module: true,
+          toplevel: true,
+          unsafe_arrows: true,
+          drop_console: !dev,
+          drop_debugger: !dev,
+        },
+        output: { quote_style: 1 },
+      }),
     ],
     watch,
   },
@@ -44,7 +59,7 @@ export default [
     input,
     output: {
       file: './es5/bundle.js',
-      format: 'iife',
+      format: 'es',
       sourcemap,
     },
     plugins: [
@@ -52,11 +67,24 @@ export default [
         ...tokens,
         __POLYFILL__: "import './lib/polyfill.js';",
       }),
+      getBabelOutputPlugin({
+        presets: ['@babel/preset-env'],
+      }),
       resolve({
         browser: true,
       }),
       commonjs(),
       babel(),
+      terser({
+        ecma: 2015,
+        mangle: { toplevel: true },
+        compress: {
+          toplevel: true,
+          drop_console: !dev,
+          drop_debugger: !dev,
+        },
+        output: { quote_style: 1 },
+      }),
     ],
     watch,
   },
