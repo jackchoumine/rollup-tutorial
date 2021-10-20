@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "module": "es6",
   "scripts": {
     "watch": "rollup ./src/main.js --file ./dist/bundle.js --format es -w",
     "build": "rollup ./src/main.js -o ./dist/bundle.js --format es",
@@ -13,7 +14,8 @@
     "bp": "rollup --config --environment NODE_ENV:production",
     "plugin": "rollup -c ./rollup.config.plugin.js --environment NODE_ENV:production",
     "tokens": "rollup -c ./rollup.config.tokens.js --environment NODE_ENV:production",
-    "babel": "rollup -c ./rollup.config.babel.js --environment NODE_ENV:production"
+    "babel": "rollup -c ./rollup.config.babel.js --environment NODE_ENV:production",
+    "system": "rollup -c ./rollup.system.config.js --environment NODE_ENV:production"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
