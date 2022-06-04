@@ -400,3 +400,5 @@ rollup-plugin-terser)
 [Building and publishing a module with TypeScript and Rollup.js](https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396)
 
 [The Ultimate Guide to Getting Started with the Rollup.js JavaScript Bundler](https://blog.openreplay.com/the-ultimate-guide-to-getting-started-with-the-rollup-js-javascript-bundler)
+
+[How to Setup a TypeScript project using Rollup.js](https://www.thisdot.co/blog/how-to-setup-a-typescript-project-using-rollup-js)
