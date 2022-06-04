@@ -17,7 +17,8 @@
     "tokens": "rollup -c ./rollup.config.tokens.js --environment NODE_ENV:production",
     "babel": "rollup -c ./rollup.config.babel.js --environment NODE_ENV:production",
     "system": "rollup -c ./rollup.system.config.js --environment NODE_ENV:production",
-    "all": "rm -rf dist && rollup -c ./rollup.config.all.js --environment NODE_ENV:production"
+    "all": "rm -rf dist && rollup -c ./rollup.config.all.js --environment NODE_ENV:production",
+    "my": "rm -rf my-plugin && rollup -c rollup.my.plugin.js"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
