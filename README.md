@@ -354,6 +354,17 @@ if (clock) {
 
 > @rollup/plugin-replace 3.1 以上版本，有更新，提供了更多选项，但是不生效，教程里使用的版本是`3.0.0`
 
+### babel 转化
+
+[@rollup/plugin-babel](https://github.com/rollup/plugins/tree/master/packages/babel)
+
+### 代码压缩
+
+[rollup-plugin-terser](https://github.com/TrySound/
+rollup-plugin-terser)
+
+### 编写插件
+
 ## 目标
 
 1. 打包一个多版本的 js 库
@@ -368,7 +379,7 @@ if (clock) {
 | option |            描述             |
 | :----: | :-------------------------: |
 |  iife  | 打包成立即执行函数 -browser |
-|   es   |   esm --nodejs & browser    |
+|  esm   |   esm --nodejs & browser    |
 |  cjs   |      commonJS - nodejs      |
 |  umd   |  通用模块 browser & nodejs  |
 |  amd   |        异步模块加载         |
