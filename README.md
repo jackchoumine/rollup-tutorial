@@ -246,6 +246,65 @@ console.log(`running in ${isProduction ? 'production' : 'development'} mode`)
 const sourcemap = isProduction ? false : true
 ```
 
+## 插件
+
+rollup 提供了插件配置，帮助增强功能：编译 TS、压缩代码、处理 scss 等，都可通过插件实现。
+
+插件按照来源分为官方插件，以`@rollup/plugins-x`命名，社区插件，以`rollup-plugin-`命名，可在[Awesome Rollup](https://github.com/rollup/awesome) 找到大家推荐的插件，也可在 npm 上搜索。
+
+很多 npm 包使用的是 commonJS 模块，rollup 可以使用插件来转化为 ES 模块。
+
+[plugin-node-resolve](https://github.com/rollup/plugins/tree/master/packages/node-resolve)--在 es 模块中从 node_modules 导入 cjs 的 npm。
+
+[plugin-commonjs](https://github.com/rollup/plugins/tree/master/packages/commonjs)-- 转 cjs 模块为 es。
+
+以上两个插件配合使用，即可在 es 中是 cjs 的 npm。
+
+`src/main.js` 引入 dayjs
+
+```js
+import * as dom from './lib/dom.js'
+import dayjs from 'dayjs'
+
+// get clock element
+const clock = dom.get('.clock')
+
+if (clock) {
+  console.log('initializing clock...')
+
+  // update clock every second
+  setInterval(() => {
+    clock.textContent = dayjs().format('HH:mm:ss')
+  }, 1000)
+}
+```
+
+打包报警告，且页面报错：
+
+`main.js:14 Uncaught ReferenceError: dayjs is not defined`
+
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h2wqs7ty9wj20r60c8gnn.jpg)
+
+使用上述插件处理：
+修改配置：
+
+```js
+import { nodeResolve as resolve } from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+
+export default {
+  //** 保持不变
+  plugins: [
+    resolve({
+      browser: true,
+    }),
+    commonjs(),
+  ],
+}
+```
+
+不再报错。
+
 ## 目标
 
 1. 打包一个多版本的 js 库
@@ -279,3 +338,7 @@ const sourcemap = isProduction ? false : true
 [Building and publishing a module with TypeScript and Rollup.js](https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396)
 
 [The Ultimate Guide to Getting Started with the Rollup.js JavaScript Bundler](https://blog.openreplay.com/the-ultimate-guide-to-getting-started-with-the-rollup-js-javascript-bundler)
+
+```
+
+```
