@@ -8,6 +8,7 @@
     "watch": "rollup ./src/main.js --file ./dist/bundle.js --format es -w",
     "build": "rollup ./src/main.js -o ./dist/bundle.js --format es",
     "iife": "rollup -c -w",
+    "iifeb": "rollup -c --environment production",
     "help": "rollup help",
     "ciife": "rollup -c ./rollup.config.iife.js",
     "cw": "rollup -c -w",

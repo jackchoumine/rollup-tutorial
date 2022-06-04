@@ -220,6 +220,32 @@ export default {
 
 > 指定构建环境
 
+rollup 允许临时指定运行环境：
+
+`npx rollup --config --environment VAR1,VAR2:value2,VAR3:x`
+
+在配置文件中，可获取这些环境变量：
+
+```bash
+process.env.VAR1---true
+process.env.VAR2---value2
+process.env.VAR3---x
+```
+
+在配置文件中获取环境变量：
+
+script：
+
+`"iifeb": "rollup -c --environment production"`
+
+```js
+const isProduction = process.env.production
+
+console.log(`running in ${isProduction ? 'production' : 'development'} mode`)
+
+const sourcemap = isProduction ? false : true
+```
+
 ## 目标
 
 1. 打包一个多版本的 js 库
