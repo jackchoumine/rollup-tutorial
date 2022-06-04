@@ -252,7 +252,9 @@ rollup 提供了插件配置，帮助增强功能：编译 TS、压缩代码、�
 
 插件按照来源分为官方插件，以`@rollup/plugins-x`命名，社区插件，以`rollup-plugin-`命名，可在[Awesome Rollup](https://github.com/rollup/awesome) 找到大家推荐的插件，也可在 npm 上搜索。
 
-很多 npm 包使用的是 commonJS 模块，rollup 可以使用插件来转化为 ES 模块。
+### 转换 cjs
+
+很多 npm 包使用的是 node 模块(cjs 格式)，rollup 可以使用插件来转化为 ES 模块。
 
 [plugin-node-resolve](https://github.com/rollup/plugins/tree/master/packages/node-resolve)--在 es 模块中从 node_modules 导入 cjs 的 npm。
 
@@ -304,6 +306,53 @@ export default {
 ```
 
 不再报错。
+
+### 替换 token --- 在代码中注入变量
+
+在代码中注入变量，比如版本好，是一个检查的需求，可使用[@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace) 实现。
+
+```js
+import replace from '@rollup/plugin-replace'
+// web design token replacements
+const tokens = {
+  __isProduction: isProduction,
+  __time_format: 'HH:mm:ss',
+  __clock_selector: '.clock',
+  __clock_interval: 1000,
+  aB_e: 'hello',
+}
+export default {
+  plugins: [
+    // replace({
+    //   include: ['src/**/*.js'],
+    //   preventAssignment: true,
+    //   values: tokens,
+    // }),
+    replace(tokens),
+  ],
+}
+```
+
+> 在 js 中如何使用 tokens?
+
+```js
+const clock = dom.get('__clock_selector')
+
+console.log('aB_e')
+
+if (clock) {
+  console.log('initializing clock...')
+
+  // update clock every second
+  setInterval(() => {
+    clock.textContent = dayjs().format('__time_format')
+  }, __clock_interval)
+}
+```
+
+> 字符串变量，使用`'`包裹
+
+> @rollup/plugin-replace 3.1 以上版本，有更新，提供了更多选项，但是不生效，教程里使用的版本是`3.0.0`
 
 ## 目标
 
