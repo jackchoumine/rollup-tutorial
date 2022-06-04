@@ -363,6 +363,10 @@ if (clock) {
 [rollup-plugin-terser](https://github.com/TrySound/
 rollup-plugin-terser)
 
+### ts 转化
+
+[rollup/plugin-typescript](https://www.npmjs.com/package/@rollup/plugin-typescript)
+
 ### 编写插件
 
 ## 目标
@@ -376,18 +380,16 @@ rollup-plugin-terser)
 
 `--format`简写`-f`
 
-| option |            描述             |
-| :----: | :-------------------------: |
-|  iife  | 打包成立即执行函数 -browser |
-|  esm   |   esm --nodejs & browser    |
-|  cjs   |      commonJS - nodejs      |
+| option |            描述             |        其他        |
+| :----: | :-------------------------: | :----------------: |
+|  iife  | 打包成立即执行函数 -browser |    可提供`name`    |
+| esm/es |   esm --nodejs & browser    |
+|  cjs   |      commonJS - nodejs      | 需要提供名字`name` |
 |  umd   |  通用模块 browser & nodejs  |
 |  amd   |        异步模块加载         |
 | system |       systemJS module       |
 
 `"rollup ./src/main.js -o ./dist/bundle.js --format es"`
-
-## 配置文件
 
 ## 参考
 
@@ -398,7 +400,3 @@ rollup-plugin-terser)
 [Building and publishing a module with TypeScript and Rollup.js](https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396)
 
 [The Ultimate Guide to Getting Started with the Rollup.js JavaScript Bundler](https://blog.openreplay.com/the-ultimate-guide-to-getting-started-with-the-rollup-js-javascript-bundler)
-
-```
-
-```

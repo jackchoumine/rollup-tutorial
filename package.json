@@ -17,7 +17,7 @@
     "tokens": "rollup -c ./rollup.config.tokens.js --environment NODE_ENV:production",
     "babel": "rollup -c ./rollup.config.babel.js --environment NODE_ENV:production",
     "system": "rollup -c ./rollup.system.config.js --environment NODE_ENV:production",
-    "all": "rollup -c ./rollup.config.all.js --environment NODE_ENV:production"
+    "all": "rm -rf dist && rollup -c ./rollup.config.all.js --environment NODE_ENV:production"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -27,6 +27,7 @@
     "@rollup/plugin-commonjs": "^21.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-replace": "~3.0.0",
+    "@rollup/plugin-typescript": "~8.3.2",
     "dayjs": "^1.11.2",
     "rollup": "^2.75.5",
     "rollup-plugin-terser": "^7.0.2"
